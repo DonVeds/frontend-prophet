@@ -24,6 +24,7 @@
         <img class="header-sun-pic" alt="runic sun" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BlackSun.svg/1200px-BlackSun.svg.png"/>
       </div>
     </header>
+    <hr>
   </div>
 </template>
 
@@ -83,7 +84,6 @@ export default {
       letter-spacing: .15em; /* Adjust as needed */
       animation: 
           typing 3.5s steps(40, end);
-      animation-iteration-count: infinite;
   }
   @keyframes typing {
       from { width: 0 }
@@ -164,10 +164,5 @@ export default {
     to {transform:rotate(360deg);}
   }
 
-  @media screen and (min-width: 900px) {
-    .header-name {
-      animation: none;
-    }
-  }
 </style>
 
