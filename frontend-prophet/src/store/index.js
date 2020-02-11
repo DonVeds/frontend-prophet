@@ -7,15 +7,27 @@ import data from '../assets/data.json'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-  },
-  getters: {
+  actions: {
+    fetchInfo(ctx) {
+      let info = data;
+    
+      ctx.commit("updateInfo", info);
+    }
   },
   mutations: {
+    updateInfo(state, info) {
+      state.info = info;
+    }
   },
-  actions: {
+  state: {
+    info: []
+  },
+  getters: {
+    allInfo(state) {
+      return state.info;
+    }
   },
   modules: {
-    posts
+      posts
   }
-})
+});

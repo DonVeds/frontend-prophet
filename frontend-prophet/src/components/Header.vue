@@ -6,17 +6,17 @@
           <p class="header-the-p">The</p>
           <hr class="header-the-line">
       </div>
-      <h1 class="header-name">{name}</h1>
-      <p class="header-text">{text}</p>
+      <h1 class="header-name">{{allInfo.name}}</h1>
+      <p class="header-text">{{allInfo.text}}</p>
       <hr class="header-line"> 
       <div class="header-ad">
-          <p class="header-ad-sale">{ad[0]}</p>
-          <p class="header-ad-descr">{ad[1]}</p>
+          <p class="header-ad-sale">{{allInfo.ad[0]}}</p>
+          <p class="header-ad-descr">{{allInfo.ad[1]}}</p>
       </div>
       <div class="header-info">
           <div class="header-info-weather">
               <p class="header-info-weather-title">NATIONAL WEATHER</p>
-              <p class="header-info-weather-text">{weather[0]}<br>{weather[1]}<br>{weather[2]}<br>{weather[3]}</p>
+              <p class="header-info-weather-text">{{allInfo.weather[0]}}<br>{{allInfo.weather[1]}}<br>{{allInfo.weather[2]}}<br>{{allInfo.weather[3]}}</p>
           </div>
       </div>
       <div class="header-sun">
@@ -28,9 +28,11 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 export default {
-  props: {
-    msg: String
+  computed: mapGetters(['allInfo']),
+  async mounted() {
+    this.$store.dispatch('fetchInfo')
   }
 }
 </script>
