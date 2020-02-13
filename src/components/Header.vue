@@ -1,6 +1,5 @@
 <template>
-  <div class="header">
-    <header>
+  <header class="header">
       <div class="header-the">
           <hr class="header-the-line">
           <p class="header-the-p">The</p>
@@ -23,9 +22,7 @@
         <p class="header-sun-runes">ᛋᚢᚾ ᚹᛁᛚᛚ ᛒᛖ ᛒᚱᛁᚷᚻᛏ<br>ᛋᛏᚪᚱ ᚹᛁᛚᛚ ᚱᛁᛋᛖ<br>ᛞᚩᚾ'ᛏ ᛖᚪᛏ ᚣᛖᛚᛚᚩᚹ ᛋᚾᚩᚹ</p>
         <img class="header-sun-pic" alt="runic sun" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BlackSun.svg/1200px-BlackSun.svg.png"/>
       </div>
-    </header>
-    <hr>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -49,6 +46,7 @@ export default {
           "text text text"
           "line line line"
           "ad info sun";
+      text-align: center;
   }
   .header-the { 
       grid-area: the;
@@ -61,8 +59,9 @@ export default {
       margin-left: 0;
       margin-right: 0;
       flex-grow: 20; 
-      height: 1px;
+      height: 3px;
       background-color: black;
+      border:0;
   }
   .header-the-p{
       flex-grow: 1;
@@ -101,15 +100,16 @@ export default {
   .header-line {
       grid-area: line;
       width: 100%;
-      height: 1px;
+      height: 2px;
       background-color: black;
+      border: 0;
   }
 
   .header-ad {
       grid-area: ad;
       display: flex;
       align-items: center;
-      border: 2px solid #555555;
+      border: 1px solid black;
       font-family: 'Kelly Slab', cursive;
       padding: 5px;
   }

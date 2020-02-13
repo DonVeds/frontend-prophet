@@ -22,8 +22,9 @@
     margin: 0;
   }
   #app {
-		text-align: center;
+    height: 100%;
 		padding: 0 1em;
 		background-color: #d5c5a4;
+    padding-bottom: 20px;
 	}
 </style>
