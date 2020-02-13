@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import posts from './modules/post.js'
+import posts from './modules/posts.js'
 import data from '../assets/data.json'
 import bookmarks from './modules/bookmarks.js'
 

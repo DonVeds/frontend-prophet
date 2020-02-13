@@ -19,7 +19,11 @@
           </div>
       </div>
       <div class="header-sun">
-        <p class="header-sun-runes">ᛋᚢᚾ ᚹᛁᛚᛚ ᛒᛖ ᛒᚱᛁᚷᚻᛏ<br>ᛋᛏᚪᚱ ᚹᛁᛚᛚ ᚱᛁᛋᛖ<br>ᛞᚩᚾ'ᛏ ᛖᚪᛏ ᚣᛖᛚᛚᚩᚹ ᛋᚾᚩᚹ</p>
+        <div class="header-sun-runes">
+          <p>ᚹᛁᛚᛚ ᛒᛖ ᛒᚱᛁᚷᚻᛏ</p>
+          <p>ĆПИĆƠК ĆТРÂТЕЙ</p>
+          <p>К ПРƠТЧТЕНИЮ ĆЕЙЧÂĆ <b>{{showBookmarkCount}}</b></p>
+        </div>
         <img class="header-sun-pic" alt="runic sun" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BlackSun.svg/1200px-BlackSun.svg.png"/>
       </div>
   </header>
@@ -28,7 +32,7 @@
 <script>
 import {mapGetters} from "vuex";
 export default {
-  computed: mapGetters(['allInfo']),
+  computed: mapGetters(['allInfo', 'showBookmarkCount']),
   async mounted() {
     this.$store.dispatch('fetchInfo')
   }
@@ -109,7 +113,7 @@ export default {
       grid-area: ad;
       display: flex;
       align-items: center;
-      border: 1px solid black;
+      border: 2px solid black;
       font-family: 'Kelly Slab', cursive;
       padding: 5px;
   }
@@ -130,6 +134,9 @@ export default {
   .header-info{
       grid-area: info;
       margin: 0px 10px;
+      border: 2px dotted black;
+      border-top: 0;
+      border-bottom: 0;
   }
 
   .header-info-weather-title {
@@ -146,18 +153,29 @@ export default {
   .header-sun {
       height: 80px;
       display: flex;
-
+      justify-self: end;
+      border-right: 2px solid black;
+      text-align: right;
   }
 
   .header-sun-runes {
-    margin-top:10px;
+    margin:0px;
     font-size: 0.9em;
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.5em;
+    line-height: 1;
   }
+
+  .header-sun-runes > p {
+    margin: 0;
+  }
+
 
   .header-sun-pic {
     animation: spin 5s linear 0s infinite;
     height: 70px;
     width: 70px;
+    margin: 0 10px;
   }
   @keyframes spin {
     from {transform:rotate(0deg);}

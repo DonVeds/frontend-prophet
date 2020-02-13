@@ -1,6 +1,6 @@
 <template>
     <div class="posts">
-      <div class="post" @click="bookmark(post)" v-for="post in allPosts" :key="post.id">
+      <div class="post" @click="bookmark(post, allBookmarks)" v-for="post in allPosts" :key="post.id" :style="bookmarkStyle(post)">
         <h2>{{post.title}}</h2>
         <p>{{post.body}}</p>
       </div>
@@ -10,13 +10,33 @@
 <script>
 import {mapGetters} from "vuex";
 export default {
-  computed: mapGetters(['allPosts']),
+  computed: mapGetters(['allPosts', 'allBookmarks']),
   async mounted() {
     this.$store.dispatch('fetchPosts')
   },
   methods: {
-    bookmark(post) {
-      this.$store.commit('addToBookmarkList', post)
+    bookmark(post, allBookmarks) {
+      
+      if (post.bookmarked == true) {
+        this.$set(post, 'bookmarked', false)
+        this.$store.commit('removeFromBookmarkList', post);
+      } else {
+        this.$set(post, 'bookmarked', true)
+        this.$store.commit('addToBookmarkList', post);
+        
+      }
+    },
+    bookmarkStyle(post) {
+      let style = {};
+
+      // let isBookmarked = allBookmarks.find(bookmark => bookmark === post).id
+      // console.log('includes ' + allBookmarks.includes(post).id)
+
+      if(post.bookmarked){
+        style.border = '2px dashed black';
+      }
+
+      return style
     }
   }
 }
@@ -33,7 +53,6 @@ export default {
   margin-top: 8px;
   }
 .post{
-  // border: 2px dashed black;
   margin: 1em;
   min-width: 14em;
   max-width: 20%;
@@ -41,6 +60,7 @@ export default {
   padding: 1em;
   background-color: #cebb92
 }
+
 .post > h2 {
   margin: 0;
   font-family: 'Kelly Slab', cursive;
