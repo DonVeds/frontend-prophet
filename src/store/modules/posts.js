@@ -1,15 +1,17 @@
 export default {
   actions: {
     async fetchPosts(ctx) {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=15");
+      const res = await fetch(
+        "https://jsonplaceholder.typicode.com/posts?_limit=15"
+      );
       const posts = await res.json();
 
-      ctx.commit('updatePosts', posts)
+      ctx.commit("updatePosts", posts);
     }
   },
   mutations: {
     updatePosts(state, posts) {
-      state.posts = posts
+      state.posts = posts;
     }
   },
   state: {
@@ -17,7 +19,7 @@ export default {
   },
   getters: {
     allPosts(state) {
-      return state.posts
+      return state.posts;
     }
-  },
-}
+  }
+};

@@ -1,9 +1,9 @@
 <template>
     <div class="posts">
-      <div class="post" @click="bookmark(post, allBookmarks)" v-for="post in allPosts" :key="post.id" :style="bookmarkStyle(post)">
+      <article class="post" @click="bookmark(post, allBookmarks)" v-for="post in allPosts" :key="post.id" :style="bookmarkStyle(post)">
         <h2>{{post.title}}</h2>
         <p>{{post.body}}</p>
-      </div>
+      </article>
     </div>
 </template>
 
@@ -58,7 +58,9 @@ export default {
   max-width: 20%;
   height: auto;
   padding: 1em;
-  background-color: #cebb92
+  background-color: #cebb92;
+  border: 2px solid transparent; 
+  user-select: none;
 }
 
 .post > h2 {

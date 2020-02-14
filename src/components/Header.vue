@@ -9,13 +9,13 @@
       <p class="header-text">{{allInfo.text}}</p>
       <hr class="header-line"> 
       <div class="header-ad">
-          <p class="header-ad-sale">{{allInfo.ad[0]}}</p>
-          <p class="header-ad-descr">{{allInfo.ad[1]}}</p>
+          <p class="header-ad-sale">{{allInfo.adPrice}}</p>
+          <p class="header-ad-descr">{{allInfo.adText}}</p>
       </div>
       <div class="header-info">
           <div class="header-info-weather">
               <p class="header-info-weather-title">NATIONAL WEATHER</p>
-              <p class="header-info-weather-text">{{allInfo.weather[0]}}<br>{{allInfo.weather[1]}}<br>{{allInfo.weather[2]}}<br>{{allInfo.weather[3]}}</p>
+              <p class="header-info-weather-text">{{allInfo.weatherA}}<br>{{allInfo.weatherR}}<br>{{allInfo.weatherS}}<br>{{allInfo.weatherV}}</p>
           </div>
       </div>
       <div class="header-sun">
