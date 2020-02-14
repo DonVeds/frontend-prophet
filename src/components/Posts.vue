@@ -1,29 +1,45 @@
 <template>
-    <div class="posts">
-      <article class="post" @click="bookmark(post, allBookmarks)" v-for="post in allPosts" :key="post.id" :style="bookmarkStyle(post)">
-        <h2>{{post.title}}</h2>
-        <p>{{post.body}}</p>
-      </article>
-    </div>
+  <div v-if="allInfo.onMainPage" class="posts">
+    <article
+      class="post"
+      @click="bookmark(post, allBookmarks)"
+      v-for="post in allPosts"
+      :key="post.id"
+      :style="bookmarkStyle(post)"
+    >
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.body }}</p>
+    </article>
+  </div>
+  <div v-else class="posts">
+    <article
+      class="post"
+      @click="bookmark(post, allBookmarks)"
+      v-for="post in allBookmarks"
+      :key="post.id"
+      :style="bookmarkStyle(post)"
+    >
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.body }}</p>
+    </article>
+  </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 export default {
-  computed: mapGetters(['allPosts', 'allBookmarks']),
+  computed: mapGetters(["allInfo", "allPosts", "allBookmarks"]),
   async mounted() {
-    this.$store.dispatch('fetchPosts')
+    this.$store.dispatch("fetchPosts");
   },
   methods: {
     bookmark(post, allBookmarks) {
-      
       if (post.bookmarked == true) {
-        this.$set(post, 'bookmarked', false)
-        this.$store.commit('removeFromBookmarkList', post);
+        this.$set(post, "bookmarked", false);
+        this.$store.commit("removeFromBookmarkList", post);
       } else {
-        this.$set(post, 'bookmarked', true)
-        this.$store.commit('addToBookmarkList', post);
-        
+        this.$set(post, "bookmarked", true);
+        this.$store.commit("addToBookmarkList", post);
       }
     },
     bookmarkStyle(post) {
@@ -32,14 +48,14 @@ export default {
       // let isBookmarked = allBookmarks.find(bookmark => bookmark === post).id
       // console.log('includes ' + allBookmarks.includes(post).id)
 
-      if(post.bookmarked){
-        style.border = '2px dashed black';
+      if (post.bookmarked) {
+        style.border = "2px dashed black";
       }
 
-      return style
+      return style;
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -51,21 +67,20 @@ export default {
   align-items: baseline;
   border: 2px solid black;
   margin-top: 8px;
-  }
-.post{
+}
+.post {
   margin: 1em;
   min-width: 14em;
   max-width: 20%;
   height: auto;
   padding: 1em;
   background-color: #cebb92;
-  border: 2px solid transparent; 
-  user-select: none;
+  border: 2px solid transparent;
 }
 
 .post > h2 {
   margin: 0;
-  font-family: 'Kelly Slab', cursive;
+  font-family: "Kelly Slab", cursive;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
@@ -74,12 +89,12 @@ export default {
 }
 .post > p {
   margin: 0;
-  font-family: 'Marck Script', cursive;
+  font-family: "Marck Script", cursive;
   font-size: 20px;
 }
 .post > p:first-letter {
   text-transform: uppercase;
-  font-family: 'Kelly Slab', cursive;
-  font-size: 150%
+  font-family: "Kelly Slab", cursive;
+  font-size: 150%;
 }
 </style>

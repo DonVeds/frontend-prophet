@@ -20,11 +20,12 @@
 <style lang="scss">
   body {
     margin: 0;
+    background: #d5c5a4
   }
   #app {
     height: 100%;
 		padding: 0 1em;
-		background-color: #d5c5a4;
     padding-bottom: 20px;
+    user-select: none;
 	}
 </style>
