@@ -23,10 +23,10 @@
         </p>
       </div>
     </div>
-    <div @click="changePage(allInfo)" class="header-sun">
+    <div @click="changePage(allInfo)" class="header-sun" title="change reading mode">
       <div class="header-sun-runes">
         <p>ᚹᛁᛚᛚ ᛒᛖ ᛒᚱᛁᚷᚻᛏ</p>
-        <a :class="{ underlined: allInfo.onMainPage===false }">ĆПИĆƠК ĆТРÂТЕЙ<br></a>
+        <a :class="{ underlined: !allInfo.onMainPage }">ĆПИĆƠК ĆТРÂТЕЙ<br></a>
         <a :class="{ underlined: allInfo.onMainPage }">К ПРƠТЧТЕНИЮ ĆЕЙЧÂĆ<b>{{ showBookmarkCount }}</b></a>
       </div>
       <img
@@ -35,6 +35,7 @@
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BlackSun.svg/1200px-BlackSun.svg.png"
       />
     </div>
+    <img v-if="!allInfo.onMainPage" class="bookmarkIcon" src="../../public/img/bookmark.svg" alt="bookmark icon">
   </header>
 </template>
 
@@ -203,5 +204,13 @@ header {
   to {
     transform: rotate(360deg);
   }
+}
+
+.bookmarkIcon {
+  z-index: 1000;
+  position: absolute;
+  top: 0px;
+  right: 10%;
+  height: 133px;
 }
 </style>

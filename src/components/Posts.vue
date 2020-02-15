@@ -2,7 +2,7 @@
   <div v-if="allInfo.onMainPage" class="posts">
     <article
       class="post"
-      @click="bookmark(post, allBookmarks)"
+      @click="bookmark(post)"
       v-for="post in allPosts"
       :key="post.id"
       :style="bookmarkStyle(post)"
@@ -11,16 +11,22 @@
       <p>{{ post.body }}</p>
     </article>
   </div>
-  <div v-else-if="!allInfo.onMainPage & allBookmarks.length>=0" class="posts">
+  <div v-else-if="!allInfo.onMainPage & allBookmarks.length > 0" class="posts">
     <article
       class="post"
-      @click="bookmark(post, allBookmarks)"
+      @click="bookmark(post)"
       v-for="post in allBookmarks"
       :key="post.id"
       :style="bookmarkStyle(post)"
     >
       <h2>{{ post.title }}</h2>
       <p>{{ post.body }}</p>
+    </article>
+  </div>
+  <div v-else class="posts">
+    <article class="post">
+      <h2>Help Article</h2>
+      <p>Please add some articles to bookmark list to see them here</p>
     </article>
   </div>
 </template>
@@ -33,8 +39,7 @@ export default {
     this.$store.dispatch("fetchPosts");
   },
   methods: {
-    bookmark(post, allBookmarks) {
-      console.log(allBookmarks.length)
+    bookmark(post) {
       if (post.bookmarked == true) {
         this.$set(post, "bookmarked", false);
         this.$store.commit("removeFromBookmarkList", post);
@@ -42,7 +47,6 @@ export default {
         this.$set(post, "bookmarked", true);
         this.$store.commit("addToBookmarkList", post);
       }
-      console.log(allBookmarks.length)
     },
     bookmarkStyle(post) {
       let style = {};
