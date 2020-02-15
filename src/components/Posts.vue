@@ -11,7 +11,7 @@
       <p>{{ post.body }}</p>
     </article>
   </div>
-  <div v-else class="posts">
+  <div v-else-if="!allInfo.onMainPage & allBookmarks.length>=0" class="posts">
     <article
       class="post"
       @click="bookmark(post, allBookmarks)"
@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     bookmark(post, allBookmarks) {
+      console.log(allBookmarks.length)
       if (post.bookmarked == true) {
         this.$set(post, "bookmarked", false);
         this.$store.commit("removeFromBookmarkList", post);
@@ -41,12 +42,10 @@ export default {
         this.$set(post, "bookmarked", true);
         this.$store.commit("addToBookmarkList", post);
       }
+      console.log(allBookmarks.length)
     },
     bookmarkStyle(post) {
       let style = {};
-
-      // let isBookmarked = allBookmarks.find(bookmark => bookmark === post).id
-      // console.log('includes ' + allBookmarks.includes(post).id)
 
       if (post.bookmarked) {
         style.border = "2px dashed black";

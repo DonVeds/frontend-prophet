@@ -8,7 +8,6 @@ export default {
 
             if (!found) {
                 state.bookmarkList.push(post);
-                state.bookmarkCount++;
             }
         },
         removeFromBookmarkList(state, post) {
@@ -18,20 +17,18 @@ export default {
 
             if (found) {
                 state.bookmarkList.pop(post);
-                state.bookmarkCount--
             }
         }
     },
     state: {
-        bookmarkList: [],
-        bookmarkCount: 0
+        bookmarkList: []
     },
     getters: {
         allBookmarks(state) {
             return state.bookmarkList;
         },
         showBookmarkCount(state) {
-            return state.bookmarkCount;
+            return state.bookmarkList.length;
         }
     }
 };
