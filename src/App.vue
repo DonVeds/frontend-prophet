@@ -13,8 +13,12 @@
     name: 'app',
     components: {
       Header, Posts
+    },
+    beforeCreate() {
+      this.$store.dispatch('initialiseStorage')
     }
   }
+
 </script>
 
 <style lang="scss">

@@ -5,6 +5,7 @@ export default {
         "https://jsonplaceholder.typicode.com/posts?_limit=15"
       );
       const posts = await res.json();
+      
 
       ctx.commit("updatePosts", posts);
     }

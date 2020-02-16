@@ -10,14 +10,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   actions: {
     fetchInfo(ctx) {
-      let info = data;
-    
-      ctx.commit("updateInfo", info);
+      ctx.commit("updateInfo");
+    },
+    initialiseStorage(ctx) {
+      ctx.commit("initialiseBookmarks");
+      ctx.commit("updateInfo");
     }
   },
   mutations: {
-    updateInfo(state, info) {
-      state.info = info;
+    updateInfo(state) {
+      state.info = data;
     }
   },
   state: {
@@ -29,7 +31,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-      posts, 
-      bookmarks
+    posts,
+    bookmarks
   }
 });

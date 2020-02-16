@@ -16,9 +16,9 @@
       <div class="header-info-weather">
         <p class="header-info-weather-title">NATIONAL WEATHER</p>
         <p class="header-info-weather-text">
-          {{ allInfo.weatherA }}<br />
-          {{ allInfo.weatherR }}<br />
-          {{ allInfo.weatherS }}<br />
+          {{ allInfo.weatherA }}<br>
+          {{ allInfo.weatherR }}<br>
+          {{ allInfo.weatherS }}<br>
           {{ allInfo.weatherV }}
         </p>
       </div>
@@ -35,7 +35,7 @@
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BlackSun.svg/1200px-BlackSun.svg.png"
       />
     </div>
-    <img v-if="!allInfo.onMainPage" class="bookmarkIcon" src="../../public/img/bookmark.svg" alt="bookmark icon">
+    <img @click="cacheBookmarks()" v-if="!allInfo.onMainPage" class="bookmarkIcon" src="../../public/img/bookmark.svg" alt="bookmark icon" title="Cache your bookmarks">
   </header>
 </template>
 
@@ -49,6 +49,9 @@ export default {
   methods: {
     changePage(allInfo) {
       this.$set(allInfo, "onMainPage", !allInfo.onMainPage);
+    },
+    cacheBookmarks() {
+      this.$store.commit('cacheBookmarks')
     }
   }
 };
