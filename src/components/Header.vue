@@ -35,7 +35,7 @@
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BlackSun.svg/1200px-BlackSun.svg.png"
       />
     </div>
-    <img @click="cacheBookmarks()" v-if="!allInfo.onMainPage" class="bookmarkIcon" src="../../public/img/bookmark.svg" alt="bookmark icon" title="Cache your bookmarks">
+    <img @click="cacheBookmarks()" v-if="!allInfo.onMainPage" class="bookmarkIcon" :class="{'animated': animated}" src="../../public/img/bookmark.svg" alt="bookmark icon" title="Cache your bookmarks">
   </header>
 </template>
 
@@ -51,8 +51,15 @@ export default {
       this.$set(allInfo, "onMainPage", !allInfo.onMainPage);
     },
     cacheBookmarks() {
-      this.$store.commit('cacheBookmarks')
-    }
+      this.animated = true;
+      this.$store.commit('cacheBookmarks');
+      setTimeout(()=>this.animated = false, 500)
+    },
+  },
+  data() {
+    return({
+      animated: false
+    })
   }
 };
 </script>
@@ -212,8 +219,22 @@ header {
 .bookmarkIcon {
   z-index: 1000;
   position: absolute;
-  top: 0px;
+  top: -20px;
   right: 10%;
-  height: 133px;
+  height: 163px;
 }
+
+.animated{
+  animation: pull 0.5s linear 0s;
+}
+
+@keyframes pull {
+  from {
+    transform: translateY(0px)
+  }
+  to {
+    transform: translateY(20px)
+  }
+}
+
 </style>
