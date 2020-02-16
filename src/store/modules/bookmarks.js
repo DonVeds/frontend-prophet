@@ -36,7 +36,6 @@ export default {
         // );
 
         state.bookmarkList = JSON.parse(localStorage.getItem("bookmarkList"));
-        // console.log(state)
       }
     }
   },
