@@ -41,11 +41,11 @@ export default {
   methods: {
     bookmark(post) {
       if (post.bookmarked == true) {
-        this.$set(post, "bookmarked", false);
         this.$store.commit("removeFromBookmarkList", post);
+        this.$set(post, "bookmarked", false);
       } else {
-        this.$set(post, "bookmarked", true);
         this.$store.commit("addToBookmarkList", post);
+        this.$set(post, "bookmarked", true);
       }
     },
     bookmarkStyle(post) {
@@ -61,7 +61,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+
 .posts {
   display: flex;
   // justify-content: space-between;
@@ -73,31 +74,66 @@ export default {
 }
 .post {
   margin: 1em;
-  min-width: 14em;
   max-width: 20%;
   height: auto;
   padding: 1em;
-  background-color: #cebb92;
+  background-color: $bgc_post;
   border: 2px solid transparent;
+}
+
+@include width_tablet {
+  .post{
+    max-width: 42%;
+    min-width: 30%;
+  }
+}
+
+@include width_laptop {
+  .post{
+    min-width: 25%;
+  }
+}
+
+@include width_phone {
+  .post{
+    max-width: 240px ;
+    min-width: 80%;
+  }
 }
 
 .post > h2 {
   margin: 0;
-  font-family: "Kelly Slab", cursive;
-  font-weight: bold;
+  @include font_post-h;
   margin-bottom: 0.5em;
 }
+@include width_phone {
+  .post > h2 {
+    font-size: 1.1em;
+  }
+}
+
+
 .post > h2:first-letter {
   text-transform: uppercase;
 }
 .post > p {
   margin: 0;
-  font-family: "Marck Script", cursive;
-  font-size: 20px;
+  @include font_post-p;
+  font-size: 1.2em;
 }
+
+@include width_phone {
+  .post > p {
+    font-size: 1em;
+  }
+}
+
+
 .post > p:first-letter {
-  text-transform: uppercase;
-  font-family: "Kelly Slab", cursive;
+  @include font_post-fl;
   font-size: 150%;
 }
+
+
+
 </style>

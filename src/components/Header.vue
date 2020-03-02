@@ -25,7 +25,6 @@
     </div>
     <div @click="changePage(allInfo)" class="header-sun" title="change reading mode">
       <div class="header-sun-runes">
-        <p>ᚹᛁᛚᛚ ᛒᛖ ᛒᚱᛁᚷᚻᛏ</p>
         <a :class="{ underlined: !allInfo.onMainPage }">ĆПИĆƠК ĆТРÂТЕЙ<br></a>
         <a :class="{ underlined: allInfo.onMainPage }">К ПРƠТЧТЕНИЮ ĆЕЙЧÂĆ<b>{{ showBookmarkCount }}</b></a>
       </div>
@@ -65,6 +64,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 header {
   display: grid;
   grid-template-columns: 30% auto 30%;
@@ -92,11 +92,23 @@ header {
   background-color: black;
   border: 0;
 }
+
+@include width_phone {
+  .header-the-line{
+    height: 2px;
+  }
+}
 .header-the-p {
   flex-grow: 1;
   font-family: "Marck Script", cursive;
   font-weight: 600;
   font-size: 2em;
+}
+
+@include width_phone {
+  .header-the-p{
+    font-size: 1.2em;
+  }
 }
 
 .header-name {
@@ -121,12 +133,24 @@ header {
   }
 }
 
+@include width_phone {
+  .header-name{
+    font-size: 1.6em;
+  }
+}
+
 .header-text {
   font-family: "Kelly Slab", cursive;
   grid-area: text;
   margin: 0;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+@include width_phone {
+  .header-text{
+    font-size: 0.7em;
+  }
 }
 
 .header-line {
@@ -144,6 +168,12 @@ header {
   border: 2px solid black;
   font-family: "Kelly Slab", cursive;
   padding: 5px;
+}
+
+@include width_phone {
+  .header-ad{
+    display: none;
+  }
 }
 
 .header-ad-sale {
@@ -166,6 +196,12 @@ header {
   border-bottom: 0;
 }
 
+@include width_phone {
+  .header-info{
+    display: none;
+  }
+}
+
 .header-info-weather-title {
   margin: 0;
   font-family: "Kelly Slab", cursive;
@@ -178,6 +214,7 @@ header {
 }
 
 .header-sun {
+  grid-area: sun;
   height: 80px;
   display: flex;
   justify-self: end;
@@ -185,20 +222,30 @@ header {
   text-align: right;
 }
 
+@include width_phone {
+  .header-sun{
+    grid-area: ad/ad/sun/sun;
+    font-size: 1em;
+    margin-left: 20%;
+    border-right: 2px solid transparent;
+  }
+}
+
 .header-sun-runes {
   margin: 0px;
-  font-size: 0.9em;
   font-family: "Amatic SC", cursive;
   font-size: 1.5em;
   line-height: 1;
 }
 
-.underlined {
-  text-decoration: underline;
+@include width_phone {
+  .header-sun-runes{
+    padding-top: 10px;
+  }
 }
 
-.header-sun-runes > p {
-  margin: 0;
+.underlined {
+  text-decoration: underline;
 }
 
 .header-sun-pic {
@@ -222,6 +269,15 @@ header {
   top: -20px;
   right: 10%;
   height: 163px;
+}
+
+@include width_phone {
+  .bookmarkIcon {
+    position: absolute;
+    top: -20px;
+    right: 0px;
+    height: 100px;
+  }
 }
 
 .animated{

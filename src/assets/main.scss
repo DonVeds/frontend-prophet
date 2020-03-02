@@ -1,0 +1,49 @@
+//COLLORS
+$bgc: #d5c5a4;
+$bgc_post: #cebb92;
+
+//COLLORS
+
+
+//FONTS
+@mixin font_post-h {
+  font-family: "Kelly Slab", cursive;
+  font-weight: bold;
+}
+
+@mixin font_post-p {
+  font-family: "Marck Script", cursive;
+}
+
+@mixin font_post-fl {
+  text-transform: uppercase;
+  font-family: "Kelly Slab", cursive;
+}
+//FONTS
+
+//PATTERNS
+@mixin bgp_main {
+  background-color: $bgc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23b7a172' fill-opacity='1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin bgp_beta {
+  background-color: $bgc_post;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23d5c5a4' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+//PATTERNS
+
+
+//MEDIA
+@mixin width_tablet {
+  @media only screen and (min-width: 890px) and (max-width: 1000px) { @content };
+}
+
+@mixin width_phone {
+  @media only screen and (max-width: 863px) { @content };
+}
+
+@mixin width_laptop {
+  @media only screen and (min-width: 1001px) and (max-width: 1398px) { @content };
+}
+//MEDIA
